@@ -3,7 +3,7 @@
   <form (submit)="submitComment()">
 
     <div class="form-group"><label for="name">Nome</label>
-      <input type="text" id="name" [(ngModel)]="comment.name" name="name" placeholder="Seu nome (ou anônimo)" />
+      <input type="text" id="name" [(ngModel)]="comment.author" name="name" placeholder="Seu nome (ou anônimo)" />
     </div>
 
 
@@ -14,7 +14,7 @@
 
 
     <div class="form-group"><label for="position">Cargo</label>
-      <input type="text" id="position" [(ngModel)]="comment.position" name="position"
+      <input type="text" id="position" [(ngModel)]="comment.authorPosition" name="position"
         placeholder="Seu cargo (ou anônimo)" />
     </div>
 

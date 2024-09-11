@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Comment } from '../../models/comment.model'
+import { CommentsService } from '../../services/api/comment.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -10,16 +12,23 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class CommentFormComponent {
-  comment = {
-    name: '',
+
+  constructor(private commentsService: CommentsService) {}
+  
+  comment: Comment = {
+    id: 0,
+    author: '',
     company: '',
-    position: '',
+    authorPosition: '',
     comment: '',
-    subject: 'Relato pessoal'
+    subject: 'Relato pessoal',
+    upVote: 0,
+    downVote: 0,
   };
 
   submitComment() {
     if (this.comment.comment) {
+      this.commentsService.addComment(this.comment)
       console.log('Comentário enviado:', this.comment);
       this.resetForm();
     } else {
@@ -29,11 +38,14 @@ export class CommentFormComponent {
 
   resetForm() {
     this.comment = {
-      name: '',
-      company: '',
-      position: '',
-      comment: '',
-      subject: 'Relato pessoal'
-    };
+    id: 0,
+    author: '',
+    company: '',
+    authorPosition: '',
+    comment: '',
+    subject: 'Relato pessoal',
+    upVote: 0,
+    downVote: 0,
+  };
   }
 }

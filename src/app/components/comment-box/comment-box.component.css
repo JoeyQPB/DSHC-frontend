@@ -177,7 +177,7 @@ h2 {
     .comment-box {
         display: grid;
         grid-template-columns: 1fr;
-        max-height: 600px;
+        height: 600px;
         overflow-y: auto;
         gap: 1rem;
     }

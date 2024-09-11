@@ -3,13 +3,13 @@
         <h2>Comentários</h2>
         @for (comment of comments; track comment) {
         <div class="comment-header">
-            <span class="author">{{ comment.author }}</span>
+            <span class="author">{{ comment.author || 'Anônimo' }}</span>
             <span class="id">ID: {{ comment.id }}</span>
-            <span class="position">{{ comment.authorPosition }}</span>
-            <span class="company">{{ comment.company }}</span>
+            <span class="position">{{ comment.authorPosition || 'Anônimo' }}</span>
+            <span class="company">{{ comment.company || 'Anônimo' }}</span>
         </div>
-        <div class="comment-subject">{{ comment.commentSubject }}</div>
-        <div class="comment-text">{{ comment.commentText }}</div>
+        <div class="comment-subject">{{ comment.subject }}</div>
+        <div class="comment-text">{{ comment.comment }}</div>
         <div class="comment-votes">
             <button class="vote-button upvote" (click)="upvoteComment(comment.id)">▲ {{ comment.upVote }}</button>
             <button class="vote-button downvote" (click)="downvoteComment(comment.id)">▼ {{ comment.downVote }}</button>

@@ -1,0 +1,22 @@
+<div class="comment-box">
+    <div class="comment">
+        <h2>Comentários</h2>
+        @for (comment of comments; track comment) {
+        <div class="comment-header">
+            <span class="author">{{ comment.author }}</span>
+            <span class="id">ID: {{ comment.id }}</span>
+            <span class="position">{{ comment.authorPosition }}</span>
+            <span class="company">{{ comment.company }}</span>
+        </div>
+        <div class="comment-subject">{{ comment.commentSubject }}</div>
+        <div class="comment-text">{{ comment.commentText }}</div>
+        <div class="comment-votes">
+            <button class="vote-button upvote" (click)="upvoteComment(comment.id)">▲ {{ comment.upVote }}</button>
+            <button class="vote-button downvote" (click)="downvoteComment(comment.id)">▼ {{ comment.downVote }}</button>
+        </div>
+        } @empty {
+            <span class="empty">Sem comentários!</span>
+        }
+    </div>
+</div>
+

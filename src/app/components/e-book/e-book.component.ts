@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './e-book.component.css'
 })
 export class EBookComponent {
-  ebookCoverImage = 'ebook-cover.png'
+  ebookCoverImage = 'cover-image.jpeg'
 
   downloadEbook() {
     const ebookUrl = 'Ebook-Test.pdf';

@@ -16,11 +16,7 @@ export class CommentBoxComponent {
   constructor(private commentsService: CommentsService) { }
 
   ngOnInit(): void {
-    this.commentsService.getAllComments().subscribe({
-      next: (data) => {this.comments = data},
-      error: (error) => {console.error('Erro ao buscar comentários', error)},
-      complete: () => { console.log("pego todos os comentarios!")}
-    });
+    this.getComments();
 
     // Inscreve-se no BehaviorSubject para saber quando um novo comentário foi adicionado
     this.commentsService.commentAdded$.subscribe(newComment => {
@@ -30,14 +26,20 @@ export class CommentBoxComponent {
     });
   }
 
-  // Método para obter todos os comentários
-  // getComments(): void {
-  //   this.commentsService.getAllComments().subscribe({
-  //     next: (data) => {this.comments = data},
-  //     error: (error) => {console.error('Erro ao buscar comentários', error)},
-  //     complete: () => { console.log("pego todos os comentarios!")}
-  //   });
-  // }
+  getComments(): void {
+    this.commentsService.getAllComments().subscribe({
+      next: (data) => {
+        this.comments = data;
+        console.log('Comentários carregados com sucesso:', this.comments);
+      },
+      error: (error) => {
+        console.error('Erro ao buscar comentários', error);
+      },
+      complete: () => {
+        console.log('Busca de comentários concluída.');
+      }
+    });
+  }
 
   upvoteComment(id: number) {
     this.commentsService.upvoteComment(id);

@@ -18,7 +18,8 @@ export class CommentsService {
   commentAdded$ = this.commentAddedSource.asObservable();
 
   getAllComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.apiUrl).pipe(
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<Comment[]>(this.apiUrl, {headers}).pipe(
       tap((comments) => {
         console.log('Comentários retornados do servidor:', comments);
       })

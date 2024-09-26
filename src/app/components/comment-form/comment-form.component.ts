@@ -20,15 +20,15 @@ export class CommentFormComponent {
     author: '',
     company: '',
     authorPosition: '',
-    comment: '',
-    subject: 'Relato pessoal',
+    commentText: '',
+    commentSubject: 'Relato pessoal',
     upVote: 0,
     downVote: 0,
   };
 
   submitComment() {
-    if (this.comment.comment) {
-      this.comment.subject === 'Relato pessoal' ? this.comment.subject = 1 : this.comment.subject = 0;
+    if (this.comment.commentText) {
+      this.comment.commentSubject === 'Relato pessoal' ? this.comment.commentSubject = 1 : this.comment.commentSubject = 0;
       this.addComment(this.comment);
       this.resetForm();
     } else {
@@ -52,8 +52,8 @@ export class CommentFormComponent {
     author: '',
     company: '',
     authorPosition: '',
-    comment: '',
-    subject: 'Relato pessoal',
+    commentText: '',
+    commentSubject: 'Relato pessoal',
     upVote: 0,
     downVote: 0,
   };

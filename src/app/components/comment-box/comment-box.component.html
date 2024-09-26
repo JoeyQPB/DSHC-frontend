@@ -8,8 +8,8 @@
             <span class="position">{{ comment.authorPosition || 'Anônimo' }}</span>
             <span class="company">{{ comment.company || 'Anônimo' }}</span>
         </div>
-        <div class="comment-subject">{{ comment.subject === 1 ? 'Relato pessoal' : 'comentário do ebook' }}</div>
-        <div class="comment-text">{{ comment.comment }}</div>
+        <div class="comment-subject">{{ comment.commentSubject === 1 ? 'Relato pessoal' : 'comentário do ebook' }}</div>
+        <div class="comment-text">{{ comment.commentText }}</div>
         <div class="comment-votes">
             <button class="vote-button upvote" (click)="upvoteComment(comment.id)">▲ {{ comment.upVote }}</button>
             <button class="vote-button downvote" (click)="downvoteComment(comment.id)">▼ {{ comment.downVote }}</button>

@@ -13,10 +13,26 @@ export class CommentBoxComponent {
 
   comments: Comment[] = [];
 
-  constructor(private commentsService: CommentsService) {}
+  constructor(private commentsService: CommentsService) { }
 
-  ngOnInit() {
-    this.comments = this.commentsService.getComments();
+  ngOnInit(): void {
+    this.getComments();
+
+    // Inscreve-se no BehaviorSubject para saber quando um novo comentário foi adicionado
+    this.commentsService.commentAdded$.subscribe(newComment => {
+      if (newComment) {
+        this.comments.push(newComment);
+      }
+    });
+  }
+
+  // Método para obter todos os comentários
+  getComments(): void {
+    this.commentsService.getAllComments().subscribe({
+      next: (data) => {this.comments = data},
+      error: (error) => {console.error('Erro ao buscar comentários', error)},
+      complete: () => { console.log("pego todos os comentarios!")}
+    });
   }
 
   upvoteComment(id: number) {

@@ -28,12 +28,22 @@ export class CommentFormComponent {
 
   submitComment() {
     if (this.comment.comment) {
-      this.commentsService.addComment(this.comment)
-      console.log('Comentário enviado:', this.comment);
+      this.comment.subject === 'Relato pessoal' ? this.comment.subject = 1 : this.comment.subject = 0;
+      this.addComment(this.comment);
       this.resetForm();
     } else {
       alert('O campo de comentário é obrigatório.');
     }
+  }
+  
+  addComment(newComment: Omit<Comment, 'id'>): void {
+    this.commentsService.createComment(newComment).subscribe(
+      {
+        next: () => {console.log('Comentário criado com sucesso!')},
+        error: (error) => {console.error('Erro ao criar comentário', error)},
+        complete: () => { console.log("Comentário enviado") }
+      }
+    );
   }
 
   resetForm() {

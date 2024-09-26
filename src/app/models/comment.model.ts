@@ -3,7 +3,7 @@ export interface Comment {
   author: string | null;
   company: string | null;
   authorPosition: string | null;
-  subject: string;
+  subject: string | Number;
   comment: string;
   upVote: number;
   downVote: number;

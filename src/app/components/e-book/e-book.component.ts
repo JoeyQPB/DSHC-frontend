@@ -11,11 +11,11 @@ export class EBookComponent {
   ebookCoverImage = 'cover-image.jpeg'
 
   downloadEbook() {
-    const ebookUrl = 'Ebook-Test.pdf';
+    const ebookUrl = 'EBook.pdf';
     const link = document.createElement('a');
     link.href = ebookUrl;
     link.target = '_blank';
-    link.download = 'titulo-do-ebook.pdf';
+    link.download = 'ESTRATÉGIA DE LIDERANÇA NO AMBIENTE CORPORATIVO MODERNO.pdf';
     link.click();
   }
 }
